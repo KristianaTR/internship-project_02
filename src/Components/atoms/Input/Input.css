@@ -1,0 +1,26 @@
+label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--text-grey);
+    width: 100%;
+}
+
+input {
+    padding: 5px 8px;
+    background-color: var(--background-grey);
+    outline: none;
+    border: none;
+    margin-top: 5px;
+}
+
+.error-input {
+    border: 1px solid red;
+}
+
+p.validation-msg {
+    color: red;
+    margin: 0;
+    font-size: 12px;
+}

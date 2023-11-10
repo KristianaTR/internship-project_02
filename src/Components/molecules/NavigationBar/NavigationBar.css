@@ -1,0 +1,34 @@
+.navigationBar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #363636;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 20px;
+    padding: 20px;
+    width: 60%;
+    box-sizing: border-box;
+}
+
+.navigationBar-wrapper ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.navigationBar-wrapper li {
+    list-style: none;
+}
+
+.navigationBar-wrapper li a {
+    display: inline-block;
+    color: #ffff;
+    font-size: 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navigationBar-wrapper .active {
+    font-weight: bold;
+    font-size: 22px;
+}
