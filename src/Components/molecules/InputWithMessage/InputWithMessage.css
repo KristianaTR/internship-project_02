@@ -1,0 +1,7 @@
+.InputWithMessage {
+    margin-bottom: 10px;
+}
+
+.InputWithMessage.error input{
+    border: 1px solid red;
+}
