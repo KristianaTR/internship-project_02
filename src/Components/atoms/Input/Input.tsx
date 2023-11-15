@@ -6,7 +6,8 @@ const Input = ({
     inputType, 
     id, 
     placeholder, 
-    onChange }: InputProps) => {
+    name,
+    onChange}: InputProps) => {
   return (
     <label htmlFor={id}>
       {label}
@@ -14,6 +15,7 @@ const Input = ({
         type={inputType}
         id={id}
         placeholder={placeholder}
+        name={name}
         onChange={onChange}
       />
     </label>

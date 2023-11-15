@@ -1,10 +1,11 @@
 import "./Text.css";
 import { TextProps } from "./TextType";
 
-const Text: React.FC<TextProps> = ({ text, type, color }) => {
+const Text: React.FC<TextProps> = ({ text, type, color, fontSize }) => {
   
   const customStyle = { 
-    color: color,
+    color,
+    fontSize,
   };
 
   return (
