@@ -1,11 +1,13 @@
 import "./Button.css";
 import { ButtonProps } from "./ButtonType";
 
-const Button = ({ text, backgroundColor, color, onClick }: ButtonProps) => {
+const Button = ({ text, backgroundColor, color, boxShadow, cursor, onClick }: ButtonProps) => {
 
   const buttonCustomStyle = {
-    backgroundColor: backgroundColor, 
-    color: color,
+    backgroundColor, 
+    color,
+    boxShadow,
+    cursor
   };
 
   return (
