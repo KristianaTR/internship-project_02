@@ -37,10 +37,6 @@ tbody td:last-child:hover {
     transition: 0.2s all;
 }
 
-tbody td:last-child:hover .rent-btn {
-    color: rgb(34, 143, 83);
-}
-
 .table-stock-img {
     text-align: center;
 }

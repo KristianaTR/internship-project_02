@@ -1,0 +1,8 @@
+.yourMovies tbody td:last-child:hover {
+    border: solid 2px var(--button-red);
+    transition: 0.2s all;
+}
+
+.yourMovies tbody td:last-child:hover button {
+    color: var(--button-red);
+}

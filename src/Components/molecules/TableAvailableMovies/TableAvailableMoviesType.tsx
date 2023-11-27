@@ -1,14 +1,13 @@
 import { MovieListProps } from "../../../Data/movieListType";
 
-export interface TableProps {
+export interface TableAvailableMoviesProps {
   movieListToDisplay: MovieListProps[];
   tableHeaders: string[];
   getImageInfo: (status: string) => stockStatusImagesProps;
-  handleClick: (movie:MovieListProps) => void;
+  handleClick: (movie: MovieListProps) => void;
 }
 
 export interface stockStatusImagesProps {
-    src: string;
-    alt: string;
+  src: string;
+  alt: string;
 }
-
