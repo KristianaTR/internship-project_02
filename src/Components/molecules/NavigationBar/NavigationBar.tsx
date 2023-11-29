@@ -1,3 +1,5 @@
+import { useAppDispatch } from '../../../App/hooks';
+import { setActiveUser } from '../../../App/userSlice';
 import Button from '../../atoms/Button';
 import './NavigationBar.css';
 import { Link, useMatch, useResolvedPath} from 'react-router-dom';
@@ -9,9 +11,13 @@ const navigation = [
     { name: 'Profile', path: '/profile', current: false },
 ]
 
-const NavigationBar = () => {
-    
-  return (
+const NavigationBar = () => {  
+    const dispatch = useAppDispatch();
+    const handleLogOut = ()=> {
+        dispatch(setActiveUser(null));
+    };
+
+    return (
         <nav className='navigationBar-wrapper'>
             <ul>
                 {navigation.map((item) => (
@@ -24,6 +30,7 @@ const NavigationBar = () => {
                 text='Sign Out'
                 backgroundColor='#D9D9D9'
                 color= '#000000'
+                onClick={handleLogOut}
             ></Button>
         </nav>
     )
