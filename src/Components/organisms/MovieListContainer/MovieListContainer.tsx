@@ -10,7 +10,7 @@ const MovieListContainer = ({
   handleClick,
 }: TableAvailableMoviesProps) => {
   return (
-    <div className="movieList-container">
+    <div className="container">
       <Text text="Available Movies" type="heading" color="#000000" />
       <TableAvailableMovies
         movieListToDisplay={movieListToDisplay}

@@ -9,7 +9,7 @@ const YourMoviesContainer = ({
   handleClick,
 }: TableYourMoviesProps) => {
   return (
-    <div className="movieList-container yourMovies">
+    <div className="container yourMovies">
       <Text text="Your movies" type="heading" color="#000000" />
       <TableYourMovies 
          movieListToDisplay={movieListToDisplay} 
