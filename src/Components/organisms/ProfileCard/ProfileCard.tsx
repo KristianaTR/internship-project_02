@@ -1,19 +1,22 @@
 import './ProfileCard.css';
 import Image from '../../atoms/Image'
 import Button from '../../atoms/Button';
-import { useAppSelector } from "../../../App/hooks";
+import { useAppDispatch, useAppSelector } from "../../../App/hooks";
 import UserDataElement from '../../molecules/UserDataElement';
+import { setActiveUser } from '../../../App/userSlice';
 
 const ProfileCard = () => {
   const activeUser = useAppSelector((state) => state.users.activeUser);
   console.log(activeUser);
+  const dispatch = useAppDispatch();
   // const fieldsToDisplay = ['name', 'surname', 'email'];
-  
-  // const dataToDisplay = fieldsToDisplay.map((field) => ({
-  //   userDataLabel: field.charAt(0).toUpperCase() + field.slice(1),
-  //   userData: activeUser?.[field],
-  // }));
+  // let dataToDisplay: { userDataLabel: string; userData: string }[] = [];
 
+  // dataToDisplay = fieldsToDisplay.map((field) => ({
+  //   userDataLabel: field.charAt(0).toUpperCase() + field.slice(1),
+  //   userData: activeUser![field] ,
+  // }));
+ 
   const dataToDisplay = [
     {
       userDataLabel: "Name:",
@@ -33,6 +36,21 @@ const ProfileCard = () => {
     src: './Images/avatar.png',
   }
   const profileImg = activeUser?.profileImg || avatarImg.src;
+
+  const handleResetEmail = () => {
+    const newEmail = prompt('Enter new email:');
+    if(newEmail!== null && activeUser) {
+      const isValidEmail = /\S+@\S+\.\S+/.test(newEmail);
+      if(isValidEmail) {
+        const updatedUser = {...activeUser, email:newEmail}
+        dispatch(setActiveUser(updatedUser));
+      } else {
+        alert("Please enter a valid email address.")
+
+      }
+      
+    }
+  }
 
   return (
     <div className='profile-card'>
@@ -61,7 +79,7 @@ const ProfileCard = () => {
         />
         <Button
           text='Reset email'
-          // onClick={}
+          onClick={handleResetEmail}
         />
       </div>
     </div>
@@ -69,3 +87,7 @@ const ProfileCard = () => {
 }
 
 export default ProfileCard
+
+function dispatch() {
+  throw new Error('Function not implemented.');
+}
