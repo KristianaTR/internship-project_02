@@ -14,16 +14,6 @@ const TableYourMovies = ({
   tableHeaders,
   handleClick,
 }: TableYourMoviesProps) => {
-//   const dispatch = useAppDispatch();
-
-//   const handleDecrement = () => {
-//     dispatch(decrementRentTime());
-//   };
-
-//   const handleIncrement = () => {
-//     dispatch(incrementRentTime());
-//   };
-
   return (
     <table className="content-table">
       <thead>
@@ -44,8 +34,6 @@ const TableYourMovies = ({
                   <RentTimeElement
                     rentTime={movie.rentTime}
                     movieId= {index}
-                    // onDecrement={handleDecrement}
-                    // onIncrement={handleIncrement}
                   />
                 }
               />

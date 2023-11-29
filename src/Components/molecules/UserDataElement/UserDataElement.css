@@ -1,0 +1,14 @@
+.userData-element {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.userData-element p {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 10px 10px;
+}
+
+.userData-element p:first-child {
+    font-weight: bold;
+}

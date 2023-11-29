@@ -45,6 +45,7 @@ const TableAvailableMovies = ({
               <TableCell
                 content={
                   <Image
+                    className="table-stock-img"
                     src={stockStatusImages[index]?.src}
                     alt={stockStatusImages[index]?.alt}
                   />

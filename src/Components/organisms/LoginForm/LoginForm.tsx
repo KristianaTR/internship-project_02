@@ -3,13 +3,17 @@ import InputWithMessage from "../../molecules/InputWithMessage";
 import Text from "../../atoms/Text";
 import Button from "../../atoms/Button";
 import { useState } from "react";
-import { UserProps } from "../../../Pages/Login/UserType";
 import { useNavigate } from "react-router-dom";
 import { setErrorMessageForField, validateEmail } from "../formUtils";
 import { LoginFormDataType, AllFormKeys } from "../formTypes";
+import { UserListProps } from "../../../Data/userListType";
+import { LoginFormProps } from "./LoginFormType";
+import { setActiveUser } from "../../../App/userSlice";
+import { useAppDispatch } from "../../../App/hooks";
 
-const LoginForm = () => {
+const LoginForm = ({userList}: LoginFormProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const LoginFormData = [
     {
@@ -41,8 +45,6 @@ const LoginForm = () => {
     general: "",
   });
 
-  const userList: UserProps[] = JSON.parse(localStorage.getItem("userList") || "[]") || [];
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -67,12 +69,12 @@ const LoginForm = () => {
 
     if (isEmailValid && isPasswordValid) {
       const foundUser = userList.find(
-        (user: UserProps) =>
+        (user: UserListProps) =>
           user.email === formData.email && user.password === formData.password
       );
 
       if (foundUser) {
-        localStorage.setItem("currentUser", JSON.stringify(foundUser));
+        dispatch(setActiveUser(foundUser));
         navigate("/");
       } else {
         setErrorMessage((prevErrors) => ({

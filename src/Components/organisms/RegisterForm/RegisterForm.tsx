@@ -4,11 +4,17 @@ import Button from '../../atoms/Button';
 import {setErrorMessageForField, validateEmail, validateRepeatField} from '../formUtils';
 import { useState } from 'react';
 import { RegisterFormDataType, AllFormKeys } from '../formTypes';
-import { UserProps } from '../../../Pages/Login/UserType';
 import { useNavigate } from 'react-router-dom';
+import { UserListProps } from '../../../Data/userListType';
+import { RegisterFormProps } from './RegisterFormType';
+import { setActiveUser, setUserList } from "../../../App/userSlice";
+import { useAppDispatch } from '../../../App/hooks';
+import { YourMovieListProps } from '../../../Data/yourMovieListType';
 
-const RegisterForm = () => {
+
+const RegisterForm = ({userList}: RegisterFormProps) => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const RegisterFormData = [
         { 
             label: "Name", 
@@ -72,12 +78,7 @@ const RegisterForm = () => {
         emailRepeat: '',
         password: '',
         passwordRepeat: '',
-    });
-
-    const [userList, setUserList] = useState<UserProps[]>(
-        JSON.parse(localStorage.getItem("userList") ?? "[]")
-    );
-    
+    });    
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -133,9 +134,12 @@ const RegisterForm = () => {
                 surname: formData.surname,
                 email: formData.email,
                 password: formData.password,
+                profileImg: "",
+                active: true,
+                rentedMovies: [],
             };
-            setUserList((prevUserList) => [...prevUserList, newUser]);
-            localStorage.setItem("userList", JSON.stringify([...userList, newUser]));
+            dispatch(setUserList([...userList, newUser]));
+            dispatch(setActiveUser(newUser));
             navigate("/");
         }
     }
