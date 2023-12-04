@@ -5,8 +5,6 @@ import RegisterForm from "../../Components/organisms/RegisterForm/RegisterForm";
 import { useState } from "react";
 import { useAppSelector } from "../../App/hooks";
 
-
-
 const Login = () => {
   const [showFormRegister, setShowFormRegister] = useState(false);
   const userList = useAppSelector((state) => state.users.userList);
@@ -16,11 +14,11 @@ const Login = () => {
   return (
     <div className="page-wrapper">
       <Text text="Movie Rental" type="heading" color="#ffffff" />
-      {!showFormRegister && <LoginForm userList={userList}/>}
+      {!showFormRegister && <LoginForm userList={userList} />}
       {!showFormRegister && (
         <Button text="Register" onClick={openFormRegister} />
       )}
-      {showFormRegister && <RegisterForm userList={userList}/>}
+      {showFormRegister && <RegisterForm userList={userList} />}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 export interface RentTimeElementProps {
   rentTime: number,
   movieId: number,
-  // onDecrement:()=> void,
-  // onIncrement:()=> void,
+  rentPrice: number,
+  movieName: string,
 }
