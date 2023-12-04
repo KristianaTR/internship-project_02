@@ -3,7 +3,7 @@ This project is a movie rental platform developed during an internship at Accent
 
 The platform was built following the guidelines and instructions provided by the creators of the internship roadmap.
 
-The platform was built by recreating the previous project "Internship-Project_01" using React.js framework,  with a focus on incorporating atomic design principles.  
+The platform was built by recreating the previous project "Internship-Project_01" using React.js framework,  with a focus on incorporating atomic design principles and using Redux for state management.  
 
 ### Installation
 
