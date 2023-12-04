@@ -2,58 +2,74 @@ import "./RentTimeElement.css";
 import Button from "../../atoms/Button";
 import { RentTimeElementProps } from "./RentTimeElementType";
 import { useAppDispatch, useAppSelector } from "../../../App/hooks";
-import { useEffect, useState } from "react";
-// import { decrementRentTime, incrementRentTime, selectRentTime } from "../../../App/rentTimeSlice";
-import { setYourMovies } from "../../../App/movieSlice";
+import { useState } from "react";
+import { setActiveUser, setUserList } from "../../../App/userSlice";
 
 const RentTimeElement = ({
   rentTime,
   movieId,
-//   onDecrement,
-//   onIncrement,
+  rentPrice,
+  movieName,
 }: RentTimeElementProps) => {
   const [localRentTime, setRentTime] = useState(rentTime);
-
   const minRentTime = 12;
   const maxRentTime = 168;
-    
-  const yourMovies = useAppSelector((state) => state.movies.yourMovies);
-  
+
+  const userList = useAppSelector((state) => state.users.userList);
+  const activeUser = useAppSelector((state) => state.users.activeUser)!;
+  const yourMovies = activeUser.rentedMovies;
+  const movieList = useAppSelector((state) => state.movies.movieList);
+  const rentPriceForPeriod = movieList.find(
+    (movie) => movie.movieName === movieName
+  )?.rentalPrice!;
+
   const dispatch = useAppDispatch();
 
-  // const handleDecrement = () => {
-  //   dispatch(incrementRentTime(rentTime, movieId));
-  // };
-
-  // const handleIncrement = () => {
-  //   dispatch(decrementRentTime(rentTime, movieId));
-  // };
-
   const handleDecrement = () => {
-    const newRentTime = Math.max(rentTime -12, minRentTime);
+    const newRentTime = Math.max(rentTime - 12, minRentTime);
+    if (newRentTime === minRentTime) {
+      alert("12h is the minimum of the rent time!");
+    }
+    const newRentPrice = rentPriceForPeriod * Math.floor(newRentTime / 12);
     setRentTime(newRentTime);
-    updateRentTime(newRentTime);
-  }
+    updateRentData(newRentTime, newRentPrice);
+  };
 
   const handleIncrement = () => {
-    const newRentTime = Math.min(rentTime +12, maxRentTime);
-    setRentTime(newRentTime);
-    updateRentTime(newRentTime);
-  }
+    const newRentTime = Math.min(rentTime + 12, maxRentTime);
+    if (newRentTime === maxRentTime) {
+      alert("You reached the maximum of the rent time!");
+    }
+    const newRentPrice = rentPriceForPeriod * Math.ceil(newRentTime / 12);
 
-  const updateRentTime = (newRentTime: number) => {
+    setRentTime(newRentTime);
+    updateRentData(newRentTime, newRentPrice);
+  };
+
+  const updateRentData = (newRentTime: number, newRentPrice: number) => {
     const updatedYourMovies = yourMovies.map((movie, index) => {
-      if(index=== movieId) {
-        return {...movie, rentTime: newRentTime};
+      if (index === movieId) {
+        return { ...movie, rentTime: newRentTime, rentalPrice: newRentPrice };
       }
       return movie;
     });
-    dispatch(setYourMovies(updatedYourMovies));
-  }
 
-  // useEffect(() => {
-  //   // TODO: update rentTime 
-  // }, [rentTime]);
+    const updatedActiveUser = {
+      ...activeUser,
+      rentedMovies: updatedYourMovies,
+    };
+    dispatch(setActiveUser(updatedActiveUser));
+
+    const updatedUserList = userList.map((user) =>
+      user.email === activeUser.email
+        ? {
+            ...user,
+            rentedMovies: updatedActiveUser.rentedMovies,
+          }
+        : user
+    );
+    dispatch(setUserList(updatedUserList));
+  };
 
   return (
     <div className="count-display">

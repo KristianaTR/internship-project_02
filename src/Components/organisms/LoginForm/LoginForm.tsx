@@ -8,10 +8,10 @@ import { setErrorMessageForField, validateEmail } from "../formUtils";
 import { LoginFormDataType, AllFormKeys } from "../formTypes";
 import { UserListProps } from "../../../Data/userListType";
 import { LoginFormProps } from "./LoginFormType";
-import { setActiveUser } from "../../../App/userSlice";
+import { setActiveUser, setUserList } from "../../../App/userSlice";
 import { useAppDispatch } from "../../../App/hooks";
 
-const LoginForm = ({userList}: LoginFormProps) => {
+const LoginForm = ({ userList }: LoginFormProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -74,7 +74,12 @@ const LoginForm = ({userList}: LoginFormProps) => {
       );
 
       if (foundUser) {
-        dispatch(setActiveUser(foundUser));
+        const updatedUser = { ...foundUser, active: true };
+        const updatedUserList = userList.map((user) =>
+          user === foundUser ? updatedUser : user
+        );
+        dispatch(setActiveUser(updatedUser));
+        dispatch(setUserList(updatedUserList));
         navigate("/");
       } else {
         setErrorMessage((prevErrors) => ({

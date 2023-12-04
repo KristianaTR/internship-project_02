@@ -34,3 +34,13 @@
     font-weight: bold;
     font-size: 22px;
 }
+
+.userAction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userAction-container p {
+    margin-bottom: 4px;
+}

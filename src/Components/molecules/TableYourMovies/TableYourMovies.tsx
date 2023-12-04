@@ -3,11 +3,6 @@ import Button from "../../atoms/Button";
 import TableCell from "../../atoms/TableCell";
 import RentTimeElement from "../RentTimeElement";
 import { TableYourMoviesProps } from "./TableYourMoviesType";
-import { useAppDispatch } from "../../../App/hooks";
-// import {
-//   decrementRentTime,
-//   incrementRentTime,
-// } from "../../../App/rentTimeSlice";
 
 const TableYourMovies = ({
   movieListToDisplay,
@@ -33,7 +28,9 @@ const TableYourMovies = ({
                 content={
                   <RentTimeElement
                     rentTime={movie.rentTime}
-                    movieId= {index}
+                    movieId={index}
+                    rentPrice={movie.rentalPrice}
+                    movieName={movie.movieName}
                   />
                 }
               />
