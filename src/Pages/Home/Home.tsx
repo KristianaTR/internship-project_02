@@ -22,11 +22,11 @@ const Home = () => {
   const getImageInfo = (status: string) => {
     const imgInfo = {
       inStock: {
-        src: "./Images/check.png",
+        src: "/Images/check.png",
         alt: "in stock",
       },
       outOfStock: {
-        src: "./Images/cross.png",
+        src: "/Images/cross.png",
         alt: "out of stock",
       },
     };
