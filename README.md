@@ -5,7 +5,7 @@ The platform was built following the guidelines and instructions provided by the
 
 The platform was built by recreating the previous project "Internship-Project_01" using React.js framework,  with a focus on incorporating atomic design principles and using Redux for state management. For data storage, the project utilizes the browser's localStorage feature.
 
-## Deployment
+### Deployment
 
 The project is deployed on GitHub Pages. You can access it here:
 https://kristianatr.github.io/internship-project_02/login
