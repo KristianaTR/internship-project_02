@@ -8,7 +8,7 @@ The platform was built by recreating the previous project "Internship-Project_01
 ### Deployment
 
 The project is deployed on GitHub Pages. You can access it here:
-https://kristianatr.github.io/internship-project_02/login
+https://kristianatr.github.io/internship-project_02/
 
 ### Installation
 
