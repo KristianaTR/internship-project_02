@@ -17,7 +17,7 @@ const InputWithMessage = ({
     <div className={`InputWithMessage ${hasError ? "error" : ""}`}>
       <Input
         label={label}
-        inputType={inputType}
+        inputType={label.toLowerCase().includes("password") ? "password" : undefined}
         id={id}
         placeholder={placeholder}
         name={name}
