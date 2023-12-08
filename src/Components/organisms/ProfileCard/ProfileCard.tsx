@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileCard = () => {
   const activeUser = useAppSelector((state) => state.users.activeUser);
-  console.log(activeUser);
   const dispatch = useAppDispatch();
   // const fieldsToDisplay = ['name', 'surname', 'email'];
   // let dataToDisplay: { userDataLabel: string; userData: string }[] = [];
