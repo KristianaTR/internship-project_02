@@ -4,6 +4,8 @@ import Button from "../../atoms/Button";
 import { useAppDispatch, useAppSelector } from "../../../App/hooks";
 import UserDataElement from "../../molecules/UserDataElement";
 import { setActiveUser } from "../../../App/userSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileCard = () => {
   const activeUser = useAppSelector((state) => state.users.activeUser);
@@ -45,7 +47,8 @@ const ProfileCard = () => {
         const updatedUser = { ...activeUser, email: newEmail };
         dispatch(setActiveUser(updatedUser));
       } else {
-        alert("Please enter a valid email address.");
+        const notify = () => toast("Please enter a valid email address.");
+        notify();
       }
     }
   };

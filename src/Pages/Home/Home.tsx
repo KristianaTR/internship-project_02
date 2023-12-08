@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { setMovieList } from "../../App/movieSlice";
 import { YourMovieListProps } from "../../Data/yourMovieListType";
 import { setActiveUser, setUserList } from "../../App/userSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +78,10 @@ const Home = () => {
       dispatch(setActiveUser(updatedActiveUser));
       dispatch(setUserList(updatedUserList));
     }
-    alreadyRented && alert("You have already rented this movie!");
+    
+    const notify = () => toast("You have already rented this movie!");
+    
+    alreadyRented && notify();
   };
 
   return (
