@@ -4,7 +4,7 @@ import Button from "../../atoms/Button";
 import { useAppDispatch, useAppSelector } from "../../../App/hooks";
 import UserDataElement from "../../molecules/UserDataElement";
 import { setActiveUser } from "../../../App/userSlice";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileCard = () => {

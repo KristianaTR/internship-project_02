@@ -4,7 +4,7 @@ import { RentTimeElementProps } from "./RentTimeElementType";
 import { useAppDispatch, useAppSelector } from "../../../App/hooks";
 import { useState } from "react";
 import { setActiveUser, setUserList } from "../../../App/userSlice";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const RentTimeElement = ({

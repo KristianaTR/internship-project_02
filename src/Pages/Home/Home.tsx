@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { setMovieList } from "../../App/movieSlice";
 import { YourMovieListProps } from "../../Data/yourMovieListType";
 import { setActiveUser, setUserList } from "../../App/userSlice";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
