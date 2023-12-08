@@ -48,6 +48,17 @@ const LoginForm = ({ userList }: LoginFormProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    switch (name) {
+      case "email":
+        validateEmail(setErrorMessage, "email", formData);
+        break;
+      case "password":
+        validatePassword();
+        break;
+      default:
+        break;
+    }
   };
 
   const validatePassword = () => {
