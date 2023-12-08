@@ -20,9 +20,6 @@ const TableAvailableMovies = ({
 
   const stockStatus = movieListToDisplay.map((movie) => {
     const isInStock = movie.countInStock > 0;
-    console.log(
-      `Movie: ${movie.movieName}, CountInStock: ${movie.countInStock}, IsInStock: ${isInStock}`
-    );
     return isInStock;
   });
 

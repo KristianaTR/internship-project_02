@@ -4,6 +4,8 @@ import { RentTimeElementProps } from "./RentTimeElementType";
 import { useAppDispatch, useAppSelector } from "../../../App/hooks";
 import { useState } from "react";
 import { setActiveUser, setUserList } from "../../../App/userSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RentTimeElement = ({
   rentTime,
@@ -24,11 +26,14 @@ const RentTimeElement = ({
   )?.rentalPrice!;
 
   const dispatch = useAppDispatch();
+  let alertMsg = "";
+  const notify = () => toast(alertMsg);
 
   const handleDecrement = () => {
     const newRentTime = Math.max(rentTime - 12, minRentTime);
     if (newRentTime === minRentTime) {
-      alert("12h is the minimum of the rent time!");
+      alertMsg = "12h is the minimum of the rent time!";
+      notify();
     }
     const newRentPrice = rentPriceForPeriod * Math.floor(newRentTime / 12);
     setRentTime(newRentTime);
@@ -38,7 +43,8 @@ const RentTimeElement = ({
   const handleIncrement = () => {
     const newRentTime = Math.min(rentTime + 12, maxRentTime);
     if (newRentTime === maxRentTime) {
-      alert("You reached the maximum of the rent time!");
+      alertMsg ="You reached the maximum of the rent time!";
+      notify();
     }
     const newRentPrice = rentPriceForPeriod * Math.ceil(newRentTime / 12);
 
